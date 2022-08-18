@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.TextView
 
 private const val TAG = "MainActivity"
-//Debugging 
+//Debugging
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
