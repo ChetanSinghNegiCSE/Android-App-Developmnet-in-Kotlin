@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wordsapp.data.SettingsDataStore
 import com.example.wordsapp.databinding.FragmentLetterListBinding
+import kotlinx.coroutines.launch
 
 class LetterListFragment : Fragment() {
 
@@ -16,6 +20,8 @@ class LetterListFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
     private var isLinearLayoutManager = true
+    private lateinit var SettingsDataStore: SettingsDataStore
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,10 +40,19 @@ class LetterListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         recyclerView = binding.recyclerView
-        chooseLayout()
+        // Initialize SettingsDataStore
+        SettingsDataStore = SettingsDataStore(requireContext())
+        SettingsDataStore.preferenceFlow.asLiveData().observe(viewLifecycleOwner, { value ->
+            isLinearLayoutManager = value
+            chooseLayout()
+            // Redraw the menu
+            activity?.invalidateOptionsMenu()
+
+        })
+
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.layout_menu, menu)
@@ -86,6 +101,11 @@ class LetterListFragment : Fragment() {
                 // Sets layout and icon
                 chooseLayout()
                 setIcon(item)
+                // Launch a coroutine and write the layout setting in the preference Datastore
+                lifecycleScope.launch {
+                    SettingsDataStore.saveLayoutToPreferencesStore(isLinearLayoutManager, requireContext())
+                }
+
 
                 return true
             }
