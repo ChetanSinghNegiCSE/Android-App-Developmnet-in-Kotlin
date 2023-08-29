@@ -14,7 +14,11 @@ class MainActivity : AppCompatActivity() {
         car.maxSpeed=200
         car.start()*/
 
-        val driver = Driver("King",42)
-        driver.displayDetails()
+        /*val driver = Driver("King",42)
+        driver.displayDetails()*/
+
+        val myCar = MyCar()
+        myCar.maxSpeed=500
+        myCar.start()
     }
 }

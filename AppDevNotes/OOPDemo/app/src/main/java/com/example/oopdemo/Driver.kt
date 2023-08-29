@@ -2,17 +2,21 @@ package com.example.oopdemo
 
 import android.util.Log
 
-
 /*constructor formal parameter  is  Declare  within class name
 and  Field Variables also Declare wih the help of  var and val
  */
+
+//Visibility Modifiers
+
 class Driver(var name : String, credit : Int) {
 
 //    var driverName=""
 //    lateinit var driverName : String
 //    var driverName = name
-    var totalCredit=50;
-    val car = Car()
+    private var totalCredit=50 //we should declare variables private
+    private val car = Car()
+
+
 
     init {
         totalCredit += credit
