@@ -2,6 +2,10 @@ package com.example.oopdemo
 
 import android.util.Log
 
+
+/*constructor formal parameter  is  Declare  within class name
+and  Field Variables also Declare wih the help of  var and val
+ */
 class Driver(var name : String, credit : Int) {
 
 //    var driverName=""
