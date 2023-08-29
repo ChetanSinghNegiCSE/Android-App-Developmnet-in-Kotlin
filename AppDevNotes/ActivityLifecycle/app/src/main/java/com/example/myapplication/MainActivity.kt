@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View.GONE
+import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.EditText
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
                 Toast.makeText(this, "Please Enter Your Name", Toast.LENGTH_SHORT).show()
                 tv_hello.text=""
-                btn_offer.visibility=GONE
+                btn_offer.visibility= INVISIBLE
 
             }else {
 
