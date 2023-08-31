@@ -24,7 +24,10 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
         //tvCount.text = count.toString()
-        tvCount.text = viewModel.count.toString()
+        //tvCount.text = viewModel.count.toString()
+        viewModel.count.observe(this){
+            tvCount.text = it.toString()
+        }
 
         btnCount.setOnClickListener {
             /*
@@ -32,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             tvCount.text=count.toString()
             */
             viewModel.updateCount()
-            tvCount.text=viewModel.count.toString()
+           // tvCount.text=viewModel.count.toString()
 
         }
     }
