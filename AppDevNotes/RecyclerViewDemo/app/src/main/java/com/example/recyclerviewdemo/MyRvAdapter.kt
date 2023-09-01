@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 
 // Step 2 => Set an Adapter for Recycler View (:RecyclerView.Adapter<>())
 
-class MyRvAdapter(val fruitsList :List<Fruit>) : RecyclerView.Adapter<MyViewHolder>() {
+class MyRvAdapter(private val fruitsList :List<Fruit>,
+                  private val clickListener :(Fruit)-> Unit
+                    ) : RecyclerView.Adapter<MyViewHolder>() {
 
 
     // Step 4 => implement 3 Methods
@@ -30,23 +32,22 @@ class MyRvAdapter(val fruitsList :List<Fruit>) : RecyclerView.Adapter<MyViewHold
         val fruits = fruitsList[position]
 //        holder.MyTextView.text="Hello From onBindViewHolder $position"
 //        holder.MyTextView.text=fruits.name
-        holder.bind(fruits)
+        holder.bind(fruits,clickListener)
     }
 
 
 }
 
 //Step 3 =>Create View Holder Class
-class MyViewHolder (val view : View):RecyclerView.ViewHolder(view){
+class MyViewHolder (private val view : View):RecyclerView.ViewHolder(view){
 
-    fun bind(fruit: Fruit) {
+    fun bind(fruit: Fruit,clickListener :(Fruit)-> Unit ) {
 
         val MyTextView = view.findViewById<TextView>(R.id.tvListItem)
         MyTextView.text=fruit.name
 
-        val suppler=fruit.suppler
         view.setOnClickListener {
-            Toast.makeText(view.context, "Suppler is $suppler", Toast.LENGTH_SHORT).show()
+            clickListener(fruit)
         }
     }
 

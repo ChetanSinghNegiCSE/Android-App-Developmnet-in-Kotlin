@@ -3,6 +3,7 @@ package com.example.recyclerviewdemo
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 /* Step 1 => Add Layout Manager to recyclerView
@@ -68,7 +69,15 @@ class MainActivity : AppCompatActivity() {
 
         // Step 8 => Set an Adapter for Recycler View
 
-        recyclerView.adapter=MyRvAdapter(fruitsList)
+        recyclerView.adapter=MyRvAdapter(fruitsList) { selectedItem: Fruit ->
+            listItemClicked(selectedItem)
+        }
 
-}
+    }
+    private fun listItemClicked(fruit: Fruit){
+
+        Toast.makeText(this, "Suppler is ${fruit.suppler}", Toast.LENGTH_SHORT).show()
+
+
+    }
 }
