@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /* We Should always implement long running tasks asynchronously in a separate thread
    to achieve that we use coroutines
@@ -24,7 +27,10 @@ class MainActivity : AppCompatActivity() {
             textView.text = count++.toString()
         }
         downloadButton.setOnClickListener {
-            downloadUserData()
+            CoroutineScope(Dispatchers.IO).launch{
+                downloadUserData()
+
+            }
         }
     }
 }
