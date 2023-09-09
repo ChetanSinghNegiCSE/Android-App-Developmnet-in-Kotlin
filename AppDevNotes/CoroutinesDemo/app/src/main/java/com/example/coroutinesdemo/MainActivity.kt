@@ -76,13 +76,32 @@ class MainActivity : AppCompatActivity() {
         }
     }
 //we can't directly  call a view component from background thread
+
+    /* if we are going to use suspending function,
+       we have to mark our calling function with suspend modifier.
+     */
     private suspend fun downloadUserData() {
-        for (i in 1..200000) {
+            for (i in 1..200000) {
+
             Log.i("MyTag", "Downloading user $i in ${Thread.currentThread().name}")
 
-            withContext(Dispatchers.Main){//Switching Threads
+            withContext(Dispatchers.Main){//withContext helps in Switching Threads
 
                 tvDownload.text="Downloading user $i"
+
+                /* Suspending Functions:- functions that can be paused and resumed,
+                                          allowing to perform asynchronous operations without blocking the calling thread.
+
+                    withContext             delay
+                    withTimeout             await
+                    withTimeoutOrNull       supervisorScope
+                    join                    coroutineScope
+
+
+                   A suspending function, can be invoked from a coroutine block or from an another suspending function only.
+
+                   A coroutine can invoke both suspending and non suspending functions.
+                 */
 
         }
     }
