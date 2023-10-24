@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background color when Spinner is pressed -->
+    <item android:state_pressed="true">
+        <shape>
+            <corners
+                android:radius="10dp"
+                />
+            <solid android:color="@color/color_primary" /> <!-- Change to your desired background color -->
+        </shape>
+    </item>
+    <!-- Background color when Spinner is focused but not pressed -->
+    <item android:state_focused="true">
+        <shape>
+            <corners
+                android:radius="10dp"
+                />
+            <solid android:color="#FFFFFF" /> <!-- Change to your desired background color -->
+        </shape>
+    </item>
+
+
+    <!-- Default background color -->
+    <item>
+        <shape>
+            <corners
+                android:radius="10dp"
+                />
+            <solid android:color="#FFFFFF" /> <!-- Change to your desired default background color -->
+        </shape>
+    </item>
+
+</selector>

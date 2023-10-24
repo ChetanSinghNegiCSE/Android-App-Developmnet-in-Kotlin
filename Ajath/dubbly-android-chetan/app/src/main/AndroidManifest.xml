@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove" />
+
+    <application
+        android:name=".BaseApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/dubble_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/dubbly_logo_small"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Dubbly"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".BottomNavigation"
+            android:exported="true" />
+        <activity
+            android:name=".ui.videoedit.VideoEditActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.privacypolicy.PrivacyPolicy"
+            android:exported="true" />
+        <activity
+            android:name=".ui.noteaboutprivacy.NoteAboutPrivacy"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.rateourapp.RateOurApp"
+            android:exported="true" />
+        <activity
+            android:name=".ui.dashboard.DashboardActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.profileedit.ProfileEditActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.TermsAndCondition.TermsAndCondition"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".ui.upload_video.UploadVideoActivity"
+            android:exported="true" >
+
+        </activity>
+        <activity
+            android:name=".ui.videouploadfirst.VideoUploadActivity"
+            android:exported="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".ui.confirmvideo.ConfirmVideoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.resetpassword.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.forgotpassword.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.signup.SignUpActivity"
+            android:exported="false"
+            android:label="@string/title_activity_sign_up"
+            android:theme="@style/Theme.Dubbly" />
+        <activity
+            android:name=".ui.aboutuser.AboutUserActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".ui.otp.OtpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.signin.SignInActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token" />
+    </application>
+
+</manifest>
